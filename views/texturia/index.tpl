@@ -13,6 +13,7 @@
 					</ul>
 				</div>
 			</div>
+			{* указываем для каждого $item name=products ограничение вывода товаров в строке на странице по условию *}
 			{if $smarty.foreach.products.iteration mod 3 == 0}
 				<div class="joomcat96_clr"></div>
 			</div>

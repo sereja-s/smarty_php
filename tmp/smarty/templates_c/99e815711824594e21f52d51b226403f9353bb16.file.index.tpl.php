@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2023-01-02 15:33:43
+<?php /* Smarty version Smarty-3.1.6, created on 2023-01-03 21:53:22
          compiled from "../views/texturia\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2500959e8b4f1efdf03-22267377%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '99e815711824594e21f52d51b226403f9353bb16' => 
     array (
       0 => '../views/texturia\\index.tpl',
-      1 => 1672662821,
+      1 => 1672771971,
       2 => 'file',
     ),
   ),

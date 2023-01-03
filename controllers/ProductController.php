@@ -1,4 +1,5 @@
 <?php
+
 /**
  * контроллер страницы категорий
  * 
@@ -13,22 +14,23 @@ include_once '../models/ProductsModel.php';
  * 
  * @param object $smarty шаблонизатор
  */
-function indexAction ($smarty){
-    $itemId = isset($_GET['id']) ? $_GET['id'] : NULL;
-    if (!$itemId) exit ();
-    // получить данные продукта
-    $rsProduct = getProductById($itemId);
-    // получить все категории
-    $rsCategories = getAllMainCatsWithChildren();
-    $smarty->assign('itemIncart', 0);
-    if (in_array($itemId, $_SESSION['cart'])) {
-        $smarty->assign('itemInCart', 1);
-    }
-    $smarty->assign('pageTitle', '');
-    $smarty->assign('rsProduct', $rsProduct);
-    $smarty->assign('rsCategories', $rsCategories);
-    loadTemplate($smarty, 'header');
-    loadTemplate($smarty, 'product');
-    loadTemplate($smarty, 'footer');
-}
+function indexAction($smarty)
+{
+	$itemId = isset($_GET['id']) ? $_GET['id'] : NULL;
+	if (!$itemId) exit();
 
+	// получить данные продукта
+	$rsProduct = getProductById($itemId);
+	// получить все категории
+	$rsCategories = getAllMainCatsWithChildren();
+	$smarty->assign('itemIncart', 0);
+	if (in_array($itemId, $_SESSION['cart'])) {
+		$smarty->assign('itemInCart', 1);
+	}
+	$smarty->assign('pageTitle', '');
+	$smarty->assign('rsProduct', $rsProduct);
+	$smarty->assign('rsCategories', $rsCategories);
+	loadTemplate($smarty, 'header');
+	loadTemplate($smarty, 'product');
+	loadTemplate($smarty, 'footer');
+}

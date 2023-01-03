@@ -5,16 +5,18 @@
  */
 
 /**
- * получить дочерние категории для категории $catId
+ * получить дочерние категории(подкатегории) для категории поданной на вход: $catId
  * 
  * @param int $catId Id категории
- * @return array массив дочерних категорий
+ * @return array массив дочерних категорий(подкатегорий)
  */
 function getСhildrenForCat($catId)
 {
 	global $link;
 	$sql = "SELECT * FROM `categories` WHERE `parent_id` = '{$catId}'";
+
 	$rs = mysqli_query($link, $sql);
+
 	return createSmartyRsArray($rs);
 }
 
@@ -28,11 +30,17 @@ function getAllMainCatsWithChildren()
 {
 	global $link;
 	$sql = 'SELECT * FROM `categories` WHERE `parent_id`=0';
+
+	// запустим запрос к БД
 	$rs = mysqli_query($link, $sql);
+
 	if ($rs != false) {
+		// в цикле извлекаем данные построчно (каждая строка будет передаваться в переменную: $row)
 		while ($row = mysqli_fetch_assoc($rs)) {
+			// получим дочерние категории(подкатегории)
 			$rsChildren = getСhildrenForCat($row['id']);
 			if ($rsChildren) {
+				// если они есть сохраним каждую в переменной (в соответствующей ячейке массива)
 				$row['children'] = $rsChildren;
 			}
 			$smartyRs[] = $row;
