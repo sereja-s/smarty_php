@@ -22,7 +22,7 @@ function getСhildrenForCat($catId)
 
 
 /**
- * Получить главные категории с привязкой дочерних
+ * Получить главные категории с привязкой дочерних (для того что бы сформировать главное меню сайта)
  * 
  * @return array массив категорий
  */
@@ -50,17 +50,20 @@ function getAllMainCatsWithChildren()
 }
 
 /**
- * получить данный категории по ID
+ * получить данные категории по ID
  * 
- * @param int $catId категория
+ * @param int $catId категория (идентификатор)
  * @return array массив - строка категории
  */
 function getCatById($catId)
 {
 	global $link;
+	// в переменную сохраняем категорию (любого типа), поданную на вход ф-ии, преобразованную в тип: int (Это защита от sql-инъекций)
 	$catId = intval($catId);
 	$sql = "SELECT * FROM `categories` WHERE `id` = '{$catId}'";
+
 	$rs = mysqli_query($link, $sql);
+
 	return mysqli_fetch_assoc($rs);
 }
 
@@ -119,7 +122,7 @@ function updateCategoryData($itemId, $parentId = -1, $newName = '')
 		$set[] = "`name` = '{$newName}'";
 	}
 	$set[] = "`parent_id` = '{$parentId}'";
-	$setStr = implode($set, ', ');
+	$setStr = implode(', ', $set);
 	$query = "UPDATE `categories` SET {$setStr} WHERE `id` = '{$itemId}'";
 	$rs = mysqli_query($link, $query);
 	return $rs;

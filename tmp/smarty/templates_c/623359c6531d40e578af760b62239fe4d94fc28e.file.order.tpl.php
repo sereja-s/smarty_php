@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2017-10-20 12:56:23
+<?php /* Smarty version Smarty-3.1.6, created on 2023-01-05 20:24:00
          compiled from "../views/texturia\order.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:701959e9d657901911-40476817%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '623359c6531d40e578af760b62239fe4d94fc28e' => 
     array (
       0 => '../views/texturia\\order.tpl',
-      1 => 1508496940,
+      1 => 1508717524,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.6',
+  'unifunc' => 'content_59e9d657a3d67',
   'variables' => 
   array (
     'rsProducts' => 0,
@@ -26,8 +28,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'adress' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.6',
-  'unifunc' => 'content_59e9d657a3d67',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_59e9d657a3d67')) {function content_59e9d657a3d67($_smarty_tpl) {?><h2>Данные заказа</h2>
 <form id="frmOrder" action="/cart/saveorder/" method="POST">

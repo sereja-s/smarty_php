@@ -24,7 +24,7 @@ define('TemplatePostfix', '.tpl');
 define('TemplateWebPath', "/www/templates/{$template}/");
 define('TemplateAdminWebPath', "/www/templates/{$templateAdmin}/");
 
-// путь к картинкам
+// путь к картинкам и файлам папки: js
 define('ImageWebPath', "/www");
 //<
 

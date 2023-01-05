@@ -13,7 +13,7 @@
 		<div class="jg_detailnavi">
 			<div class="jg_iconbar" style="font-size: 12px;">
 				<a id="addCart_{$rsProduct['id']}" {if $itemIncart}style="display: none;" {/if} href="#"
-					onclick="addToCart({$rsProduct['id']}); return false;" alt="Добавить в корзину">Добавить в корзину</a>
+					onclick="addToCart({$rsProduct['id']}); return false;" alt="Добавить в корзину">ДОБАВИТЬ В КОРЗИНУ</a>
 				<a id="removeCart_{$rsProduct['id']}" {if !$itemIncart}style="display: none;" {/if} href="#"
 					onclick="removeFromCart({$rsProduct['id']}); return false;" alt="Удалить из корзины">Удалить из
 					корзины</a>

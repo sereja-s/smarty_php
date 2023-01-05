@@ -20,6 +20,7 @@ function getLastProducts($offset = 1, $limit = 12)
 
 	$sql = "SELECT * FROM `products` WHERE `status`=1 ORDER BY `id` DESC";
 	$sql .= " LIMIT {$offset}, {$limit}";
+
 	$rs = mysqli_query($link, $sql);
 	$rows = createSmartyRsArray($rs);
 	return array($rows, $cnt[0]['cnt']);
@@ -35,10 +36,14 @@ function getProductsByCat($itemId, $offset = 1, $limit = 9)
 {
 	global $link;
 	$itemId = intval($itemId);
+
 	$sqlCnt = "SELECT count(`id`) as cnt FROM `products` WHERE `category_id` = '{$itemId}'";
+
 	$rs = mysqli_query($link, $sqlCnt);
 	$cnt = createSmartyRsArray($rs);
+
 	$sql = "SELECT * FROM `products` WHERE `category_id` = '{$itemId}' AND `status`=1 LIMIT {$offset}, {$limit}";
+
 	$rs = mysqli_query($link, $sql);
 	$rows = createSmartyRsArray($rs);
 	return array($rows, $cnt[0]['cnt']);
@@ -68,7 +73,7 @@ function getProductById($itemId)
 function getProductsFromArray($itemsIds)
 {
 	global $link;
-	$strIds = implode($itemsIds, ', ');
+	$strIds = implode(', ', $itemsIds);
 	$sql = "SELECT * FROM `products` WHERE `id` in ({$strIds})";
 	$rs = mysqli_query($link, $sql);
 	return createSmartyRsArray($rs);
@@ -135,7 +140,7 @@ function updateProduct($itemId, $itemName, $itemPrice, $itemStatus, $itemDesc, $
 	if ($newFileName) {
 		$set[] = "`image` = '{$newFileName}'";
 	}
-	$setStr = implode($set, ', ');
+	$setStr = implode(', ', $set);
 	$query = "UPDATE `products` SET {$setStr} WHERE `id` = '{$itemId}'";
 	$rs = mysqli_query($link, $query);
 	return $rs;

@@ -25,6 +25,7 @@ $actionName = isset($_GET['action']) ? $_GET['action'] : 'index';
 if (isset($_SESSION['user'])) {
 	$smarty->assign('arUser', $_SESSION['user']);
 }
+
 // инициализируем переменную кол-ва элементов в корзине
 $smarty->assign('cartCntItems', count($_SESSION['cart']));
 

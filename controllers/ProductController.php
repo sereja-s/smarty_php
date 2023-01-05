@@ -16,13 +16,20 @@ include_once '../models/ProductsModel.php';
  */
 function indexAction($smarty)
 {
+	// получаем идентификатор продукта из параметра: $_GET['id']
 	$itemId = isset($_GET['id']) ? $_GET['id'] : NULL;
 	if (!$itemId) exit();
 
 	// получить данные продукта
 	$rsProduct = getProductById($itemId);
+
 	// получить все категории
 	$rsCategories = getAllMainCatsWithChildren();
+
+
+
+	// инициализируем переменные:
+
 	$smarty->assign('itemIncart', 0);
 	if (in_array($itemId, $_SESSION['cart'])) {
 		$smarty->assign('itemInCart', 1);
@@ -30,6 +37,7 @@ function indexAction($smarty)
 	$smarty->assign('pageTitle', '');
 	$smarty->assign('rsProduct', $rsProduct);
 	$smarty->assign('rsCategories', $rsCategories);
+
 	loadTemplate($smarty, 'header');
 	loadTemplate($smarty, 'product');
 	loadTemplate($smarty, 'footer');

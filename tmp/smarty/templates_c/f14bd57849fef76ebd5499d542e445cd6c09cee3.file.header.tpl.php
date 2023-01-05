@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2023-01-02 16:09:04
+<?php /* Smarty version Smarty-3.1.6, created on 2023-01-05 20:22:09
          compiled from "../views/texturia\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1135259e8b4f1ec0c63-92813670%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f14bd57849fef76ebd5499d542e445cd6c09cee3' => 
     array (
       0 => '../views/texturia\\header.tpl',
-      1 => 1672663668,
+      1 => 1672939326,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'pageTitle' => 0,
     'TemplateWebPath' => 0,
+    'ImageWebPath' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -38,8 +39,10 @@ css/style.css" type="text/css">
 css/joomgallery.css" type="text/css">
 	<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['TemplateWebPath']->value;?>
 css/template.css" type="text/css">
-	<script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
-	<script type="text/javascript" src="/js/main.js"></script>
+	<script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ImageWebPath']->value;?>
+/js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ImageWebPath']->value;?>
+/js/main.js"></script>
 	<!--[if lte IE 7]>
 <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['TemplateWebPath']->value;?>
 css/ieonly.css" type="text/css">

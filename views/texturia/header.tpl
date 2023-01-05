@@ -7,8 +7,8 @@
 	<link rel="stylesheet" href="{$TemplateWebPath}css/style.css" type="text/css">
 	<link rel="stylesheet" href="{$TemplateWebPath}css/joomgallery.css" type="text/css">
 	<link rel="stylesheet" href="{$TemplateWebPath}css/template.css" type="text/css">
-	<script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
-	<script type="text/javascript" src="/js/main.js"></script>
+	<script type="text/javascript" src="{$ImageWebPath}/js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="{$ImageWebPath}/js/main.js"></script>
 	<!--[if lte IE 7]>
 <link rel="stylesheet" href="{$TemplateWebPath}css/ieonly.css" type="text/css">
 <![endif]-->
