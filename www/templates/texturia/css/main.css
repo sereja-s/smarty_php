@@ -28,6 +28,9 @@ body{
     padding: 3px;
     font-weight: bold;
 }
+.menuCaption:hover{
+    text-decoration: none;
+}
 .cartBox{
     padding: 5px 0px 5px 0px;
 }

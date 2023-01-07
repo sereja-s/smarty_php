@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2017-10-20 12:56:48
+<?php /* Smarty version Smarty-3.1.6, created on 2023-01-07 23:51:50
          compiled from "../views/texturia\user.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3040859e9d670457ee6-72174121%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c1e7441eb06760e1dbb1acf4c2091dcbf6451c98' => 
     array (
       0 => '../views/texturia\\user.tpl',
-      1 => 1508496966,
+      1 => 1508717524,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.6',
+  'unifunc' => 'content_59e9d6705185b',
   'variables' => 
   array (
     'arUser' => 0,
@@ -23,8 +25,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'itemChild' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.6',
-  'unifunc' => 'content_59e9d6705185b',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_59e9d6705185b')) {function content_59e9d6705185b($_smarty_tpl) {?><h1>Ваши регистрационные данные:</h1>
 <table border="0">

@@ -73,9 +73,13 @@ function getProductById($itemId)
 function getProductsFromArray($itemsIds)
 {
 	global $link;
+	//d($itemsIds);
 	$strIds = implode(', ', $itemsIds);
+	//d($strIds);
 	$sql = "SELECT * FROM `products` WHERE `id` in ({$strIds})";
+
 	$rs = mysqli_query($link, $sql);
+
 	return createSmartyRsArray($rs);
 }
 

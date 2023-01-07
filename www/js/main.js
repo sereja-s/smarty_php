@@ -51,7 +51,7 @@ function removeFromCart(itemId) {
 }
 
 /**
- * Подсчет стоимости выбранного товара
+ * Подсчет стоимости выбранного товара (с учётом кол-ва)
  * 
  * @param {int} itemId ID продукта
  * 
@@ -60,18 +60,22 @@ function conversionPrice(itemId) {
 	var newCnt = $('#itemCnt_' + itemId).val();
 	var itemPrice = $('#itemPrice_' + itemId).attr('value');
 	var itemRealPrice = newCnt * itemPrice;
+
 	$('#itemRealPrice_' + itemId).html(itemRealPrice);
 }
 
 /**
- * Получение данных с формы
+ * Получение данных с формы (собирает в json-массив все нужные значения)
  * 
  */
 function getData(obj_form) {
+	// в переменной сохраняем пустой массив
 	var hData = {};
+	// с помощью функыии jQuery пробегаем по всем указанным здементам данного объекта: obj_form
 	$('input, textarea, select', obj_form).each(function () {
 		if (this.name && this.name != '') {
 			hData[this.name] = this.value;
+			// для наглядности выводим в консоль каждый элемент
 			console.log('hData[' + this.name + '] = ' + hData[this.name]);
 		}
 	});
@@ -79,13 +83,13 @@ function getData(obj_form) {
 }
 
 /**
- * регистрация пользователя
- * 
- * @returns {undefined}
- * 
+ * регистрация нового пользователя
+ *  
  */
 function registerNewUser() {
+	// получаем массив данных в формате: json
 	var postData = getData('#registerBox');
+
 	$.ajax({
 		type: 'POST',
 		async: false,
@@ -95,12 +99,16 @@ function registerNewUser() {
 		success: function (data) {
 			if (data['success']) {
 				alert(data['message']);
-				//>блок в левом углу
-				$('#registerBox').hide();
-				$('#userLink').attr('href', '/user/');
-				$('#userLink').html(data['userName']);
-				$('#userBox').show();
+
+				//> блок в левом углу
+				$('#registerBox').hide(); // блок регистрации прячем
+
+				$('#userLink').attr('href', '/user/'); // у объекта с id = userLink меняем значение атрибута: href на указанное
+				$('#userLink').html(data['userName']); // у объекта с id = userLink указываем значение, которое будет  выводится на экран (здесь- как ссылка)
+
+				$('#userBox').show(); // блок зарегистрированого пользователя показываем
 				//<
+
 				//> на странице заказа
 				$('#loginBox').hide();
 				$('#btnSaveOrder').show();
@@ -116,22 +124,33 @@ function registerNewUser() {
  * Авторизация пользователя
  */
 function login() {
+	// обращаемся к объекту с id = loginEmail и берём его значение: value
 	var email = $('#loginEmail').val();
+	// обращаемся к объекту с id = loginPwd и берём его значение: value
 	var pwd = $('#loginPwd').val();
+
+	// формируем строку запроса
 	var postData = "email=" + email + "&pwd=" + pwd;
+
+	// выполнение ajax-запроса:
 	$.ajax({
 		type: 'POST',
 		async: false,
 		url: '/user/login/',
 		data: postData,
 		dataType: 'json',
+		// при успешном выполнении запроса
 		success: function (data) {
 			if (data['success']) {
+				// прячем соответствующие формы
 				$('#registerBox').hide();
 				$('#loginBox').hide();
+
 				$('#userLink').attr('href', '/user/');
 				$('#userLink').html(data['displayName']);
-				$('#userBox').show();
+
+				$('#userBox').show(); // показываем блок с id = userBox
+
 				//> заполняем поля на странице заказов
 				$('#name').val(data['name']);
 				$('#phone').val(data['phone']);
@@ -149,9 +168,12 @@ function login() {
  * показать либо скрыть форму регистрации
  */
 function showRegisterBox() {
+	// проверим наличие стиля у данного блока
 	if ($('#registerBoxHidden').css('display') != 'block') {
+		// если блок был не виден, покажем его
 		$('#registerBoxHidden').show();
 	} else {
+		// иначе скроем
 		$('#registerBoxHidden').hide();
 	}
 }

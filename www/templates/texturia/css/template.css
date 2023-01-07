@@ -26,14 +26,15 @@ body {
 }
 
 a:link, a:visited {
-	color:#fc930a;
+	color:#fcc205;
 	text-decoration: none;
 	font-weight: bold;
 	outline:none;
 }
 
 a:hover {
-	text-decoration: none;
+	/* text-decoration: none; */
+	color: #7efc08;
 }
 
 input.button { cursor: pointer; }
@@ -346,8 +347,8 @@ background:url(../images/jf_div.png) repeat-x bottom left;
 }
 #jf-right .re-link{
 	font-size:12px;
-	color:#fff;
-	text-decoration:none;
+	color:rgb(247, 243, 9);
+	/* text-decoration:none; */
 	font-weight:bold;
 }
 #jf-right a.re-link:hover{

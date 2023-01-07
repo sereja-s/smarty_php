@@ -46,6 +46,7 @@ function removefromcartAction()
 {
 	$itemId = isset($_GET['id']) ? intval($_GET['id']) : NULL;
 	if (!$itemId) exit();
+
 	$resData = array();
 	$key = array_search($itemId, $_SESSION['cart']);
 	if ($key !== FALSE) {
@@ -55,6 +56,7 @@ function removefromcartAction()
 	} else {
 		$resData['success'] = 0;
 	}
+
 	echo json_encode($resData);
 }
 
@@ -65,12 +67,16 @@ function removefromcartAction()
  */
 function indexAction($smarty)
 {
+	// получим массив идентификаторов товара, который лежит в корзине (если нет, переменная инициализируется пустым массивом)
 	$itemsIds = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
+
 	$rsCategories = getAllMainCatsWithChildren();
 	$rsProducts = getProductsFromArray($itemsIds);
+
 	$smarty->assign('pageTitle', 'Корзина');
 	$smarty->assign('rsCategories', $rsCategories);
 	$smarty->assign('rsProducts', $rsProducts);
+
 	loadTemplate($smarty, 'header');
 	loadTemplate($smarty, 'cart');
 	loadTemplate($smarty, 'footer');

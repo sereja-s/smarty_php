@@ -30,6 +30,7 @@ function indexAction($smarty)
 
 	// инициализируем переменные:
 
+	// переменная является флагом и показыает если ли текущий товар (с указанным id) в корзине
 	$smarty->assign('itemIncart', 0);
 	if (in_array($itemId, $_SESSION['cart'])) {
 		$smarty->assign('itemInCart', 1);
@@ -37,6 +38,8 @@ function indexAction($smarty)
 	$smarty->assign('pageTitle', '');
 	$smarty->assign('rsProduct', $rsProduct);
 	$smarty->assign('rsCategories', $rsCategories);
+
+
 
 	loadTemplate($smarty, 'header');
 	loadTemplate($smarty, 'product');

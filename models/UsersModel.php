@@ -18,16 +18,21 @@
 function registerNewUser($email, $pwdMD5, $name, $phone, $adress)
 {
 	global $link;
+
 	$email = htmlspecialchars(mysqli_real_escape_string($link, $email));
 	$name = htmlspecialchars(mysqli_real_escape_string($link, $name));
 	$phone = htmlspecialchars(mysqli_real_escape_string($link, $phone));
 	$adress = htmlspecialchars(mysqli_real_escape_string($link, $adress));
+
 	$sql = "INSERT INTO `users` (`email`, `pwd`, `name`, `phone`, `adress`) VALUES ('{$email}', '{$pwdMD5}', '{$name}', '{$phone}', '{$adress}')";
+
 	$rs = mysqli_query($link, $sql);
 	if ($rs) {
 		$sql = "SELECT * FROM `users` WHERE (`email` = '{$email}' and `pwd` = '{$pwdMD5}') LIMIT 1";
+
 		$rs = mysqli_query($link, $sql);
 		$rs = createSmartyRsArray($rs);
+
 		if (isset($rs[0])) {
 			$rs['success'] = 1;
 		} else {
@@ -40,7 +45,7 @@ function registerNewUser($email, $pwdMD5, $name, $phone, $adress)
 }
 
 /**
- * проверка входных параметров
+ * проверка входных параметров пользовател
  * 
  * @param string $email
  * @param string $pwd1
@@ -50,6 +55,7 @@ function registerNewUser($email, $pwdMD5, $name, $phone, $adress)
 function checkRegisterParams($email, $pwd1, $pwd2)
 {
 	$res = NULL;
+
 	if (!$email) {
 		$res['success'] = 0;
 		$res['message'] = 'Введите email';
@@ -73,7 +79,7 @@ function checkRegisterParams($email, $pwd1, $pwd2)
 }
 
 /**
- * проверка почты (есть ли email в БД)
+ * проверка почты (есть ли указываемая пользователем email в БД)
  * 
  * @param string $email
  * @return array массив - строка из таблицы users либо пустой массив
@@ -82,7 +88,9 @@ function checkUserEmail($email)
 {
 	global $link;
 	$email = mysqli_real_escape_string($link, $email);
+
 	$sql = "SELECT `id` FROM `users` WHERE `email` = '{$email}'";
+
 	$rs = mysqli_query($link, $sql);
 	return createSmartyRsArray($rs);
 }
@@ -99,9 +107,12 @@ function loginUser($email, $pwd)
 	global $link;
 	$email = htmlspecialchars(mysqli_real_escape_string($link, $email));
 	$pwd = md5($pwd);
+
 	$sql = "SELECT * FROM `users` WHERE (`email` = '{$email}' and `pwd` = '{$pwd}') LIMIT 1";
+
 	$rs  = mysqli_query($link, $sql);
 	$rs = createSmartyRsArray($rs);
+
 	if (isset($rs[0])) {
 		$rs['success'] = 1;
 	} else {
