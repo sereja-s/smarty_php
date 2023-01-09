@@ -87,6 +87,7 @@ function checkRegisterParams($email, $pwd1, $pwd2)
 function checkUserEmail($email)
 {
 	global $link;
+
 	$email = mysqli_real_escape_string($link, $email);
 
 	$sql = "SELECT `id` FROM `users` WHERE `email` = '{$email}'";
@@ -105,6 +106,7 @@ function checkUserEmail($email)
 function loginUser($email, $pwd)
 {
 	global $link;
+
 	$email = htmlspecialchars(mysqli_real_escape_string($link, $email));
 	$pwd = md5($pwd);
 
@@ -122,7 +124,7 @@ function loginUser($email, $pwd)
 }
 
 /**
- * Изменение данных пользователя
+ * Изменение данных текущего пользователя
  * 
  * @param str $name имя
  * @param str $phone телефон
@@ -135,22 +137,29 @@ function loginUser($email, $pwd)
 function updateUserData($name, $phone, $adress, $pwd1, $pwd2, $curPwd)
 {
 	global $link;
+
 	$email = htmlspecialchars(mysqli_real_escape_string($link, $_SESSION['user']['email']));
-	$name = htmlspecialchars(mysqli_real_escape_string($link, $name));
-	$phone = htmlspecialchars(mysqli_real_escape_string($link, $phone));
-	$adress = htmlspecialchars(mysqli_real_escape_string($link, $adress));
-	//$curPwd = htmlspecialchars(mysqli_real_escape_string($link, $curPwd));
-	$pwd1 = trim($pwd1);
-	$pwd2 = trim($pwd2);
+	$name = htmlspecialchars(mysqli_real_escape_string($link, "$name"));
+	$phone = htmlspecialchars(mysqli_real_escape_string($link, "$phone"));
+	$adress = htmlspecialchars(mysqli_real_escape_string($link, "$adress"));
+	//$curPwd = htmlspecialchars(mysqli_real_escape_string($link, "$curPwd"));
+
+	$pwd1 = trim("$pwd1");
+	$pwd2 = trim("$pwd2");
+
 	$newPwd = NULL;
+
 	if ($pwd1 && ($pwd1 == $pwd2)) {
 		$newPwd = md5($pwd1);
 	}
+
 	$sql = "UPDATE `users` SET ";
 	if ($newPwd) {
 		$sql .= "`pwd` = '{$newPwd}', ";
 	}
+
 	$sql .= "`name` = '{$name}', `phone` = '{$phone}', `adress` = '{$adress}' WHERE `email` = '{$email}' AND `pwd` = '{$curPwd}' LIMIT 1";
+
 	$rs = mysqli_query($link, $sql);
 	return $rs;
 }

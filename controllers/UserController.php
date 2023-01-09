@@ -115,17 +115,20 @@ function loginAction()
  */
 function indexAction($smarty)
 {
-	// если не залогинен то редирект на главную страницу
+	// если пользователь не залогинен то редирект на главную страницу
 	if (!isset($_SESSION['user'])) {
 		redirect('/');
 	}
-	// получаем список категорий
+	// получаем список категорий для меню
 	$rsCategories = getAllMainCatsWithChildren();
+
 	// получаем список заказов пользователя
 	$rsUserOrders = getCurUserOrders();
+
 	$smarty->assign('pageTitle', 'Страница пользователя');
 	$smarty->assign('rsCategories', $rsCategories);
 	$smarty->assign('rsUserOrders', $rsUserOrders);
+
 	loadTemplate($smarty, 'header');
 	loadTemplate($smarty, 'user');
 	loadTemplate($smarty, 'footer');
@@ -133,7 +136,7 @@ function indexAction($smarty)
 
 /**
  * обновление данных пользователя
- * @return json массив данных пользователя
+ * @return json массив данных пользователя (обновлённые)
  */
 function updateAction()
 {
@@ -141,13 +144,18 @@ function updateAction()
 	if (!isset($_SESSION['user'])) {
 		redirect('/');
 	}
+
+	// инициализация переменных:
+
 	$resData = array();
+
 	$phone = isset($_REQUEST['phone']) ? $_REQUEST['phone'] : NULL;
 	$adress = isset($_REQUEST['adress']) ? $_REQUEST['adress'] : NULL;
 	$name = isset($_REQUEST['name']) ? $_REQUEST['name'] : NULL;
 	$pwd1 = isset($_REQUEST['pwd1']) ? $_REQUEST['pwd1'] : NULL;
 	$pwd2 = isset($_REQUEST['pwd2']) ? $_REQUEST['pwd2'] : NULL;
 	$curPwd = isset($_REQUEST['curPwd']) ? $_REQUEST['curPwd'] : NULL;
+
 	// проверка правильности пароля
 	$curPwdMd5 = md5($curPwd);
 	if (!$curPwd || ($_SESSION['user']['pwd'] != $curPwdMd5)) {
@@ -156,20 +164,30 @@ function updateAction()
 		echo json_encode($resData);
 		return FALSE;
 	}
+
 	// обновление данных
 	$res = updateUserData($name, $phone, $adress, $pwd1, $pwd2, $curPwdMd5);
+
 	if ($res) {
 		$resData['success'] = 1;
 		$resData['message'] = 'Данные сохранены';
 		$resData['userName'] = $name;
+
+		// обновляем сессионные данные пользователя
 		$_SESSION['user']['name'] = $name;
 		$_SESSION['user']['phone'] = $phone;
 		$_SESSION['user']['adress'] = $adress;
+
+		// переменной присаиваем текущее значение пароля, который находится в сессии
 		$newPwd = $_SESSION['user']['pwd'];
+
+		// если пароль изменялся
 		if ($pwd1 && ($pwd1 == $pwd2)) {
 			$newPwd = md5(trim($pwd1));
 		}
+		// обновляем пароль в сессии
 		$_SESSION['user']['pwd'] = $newPwd;
+
 		$_SESSION['user']['displayName'] = $name ? $name : $_SESSION['email'];
 	} else {
 		$resData['success'] = 0;

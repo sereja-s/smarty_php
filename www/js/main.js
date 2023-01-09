@@ -184,13 +184,18 @@ function showRegisterBox() {
  */
 function updateUserData() {
 	console.log("js - updateUserData");
+
+	// собираем данные(значения) из формы
 	var phone = $('#newPhone').val();
 	var adress = $('#newAdress').val();
 	var pwd1 = $('#newPwd1').val();
 	var pwd2 = $('#newPwd2').val();
 	var curPwd = $('#curPwd').val();
 	var name = $('#newName').val();
+
+	// формируем json-массив для отправки в UserController(в updateAction()) посредством ajax-запроса:
 	var postData = { phone: phone, adress: adress, pwd1: pwd1, pwd2: pwd2, curPwd: curPwd, name: name };
+
 	$.ajax({
 		type: 'POST',
 		async: false,
@@ -199,7 +204,7 @@ function updateUserData() {
 		dataType: 'json',
 		success: function (data) {
 			if (data['success']) {
-				$('#userLink').html(data['userName']);
+				$('#userLink').html(data['userName']); // в блок записываем имя
 				alert(data['message']);
 			} else {
 				alert(data['message']);
