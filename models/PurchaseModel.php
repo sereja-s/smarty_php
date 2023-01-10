@@ -14,12 +14,16 @@
 function setPurchaseForOrder($orderId, $cart)
 {
 	global $link;
+
 	$sql = "INSERT INTO `purchase` (`order_id`, `product_id`, `price`, `amount`) VALUES ";
+
 	$values = array();
 	// формируем массив строк для запроса для каждого товара
+	// пробежимся по массиву покупок в $cart
 	foreach ($cart as $item) {
 		$values[] = "('{$orderId}', '{$item['id']}', '{$item['price']}', '{$item['cnt']}')";
 	}
+
 	$sql .= implode(', ', $values);
 	$rs = mysqli_query($link, $sql);
 	return $rs;

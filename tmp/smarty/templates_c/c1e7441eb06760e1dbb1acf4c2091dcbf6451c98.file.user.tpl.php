@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2023-01-08 14:51:25
+<?php /* Smarty version Smarty-3.1.6, created on 2023-01-10 20:55:31
          compiled from "../views/texturia\user.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3040859e9d670457ee6-72174121%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c1e7441eb06760e1dbb1acf4c2091dcbf6451c98' => 
     array (
       0 => '../views/texturia\\user.tpl',
-      1 => 1673178679,
+      1 => 1673373318,
       2 => 'file',
     ),
   ),
@@ -119,7 +119,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 								<th>ID</th>
 								<th>Название</th>
 								<th>Цена</th>
-								<th>Количечтво</th>
+								<th>Количество</th>
 							</tr>
 							<?php  $_smarty_tpl->tpl_vars['itemChild'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['itemChild']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['item']->value['children']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}

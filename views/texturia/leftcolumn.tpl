@@ -59,6 +59,7 @@
 						<a href="/user/" id="userLink"></a><br>
 						<a href="/user/logout/" onclick="logout();">Выход</a>
 					</div>
+					{* если переменная не существует или равна нулю (т.е.если пользователя нет в сессии (не авторизован)) *}
 					{if !isset($hideLoginBox)}
 						<div id="loginBox">
 							<div id="form-login">

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2023-01-07 22:58:57
+<?php /* Smarty version Smarty-3.1.6, created on 2023-01-10 20:30:56
          compiled from "../views/texturia\leftcolumn.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2896659e9b36a3af262-48387688%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '55d99bb1b06864826e0d9f1c664dff09f7a07edf' => 
     array (
       0 => '../views/texturia\\leftcolumn.tpl',
-      1 => 1673121446,
+      1 => 1673370325,
       2 => 'file',
     ),
   ),

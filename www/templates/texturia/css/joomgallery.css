@@ -55,7 +55,7 @@
 	font-size: 14px;
 }
 #jg_back_detail a:link, #jg_back_detail a:visited {
-	background: url(../images/jg_back_detail.png) no-repeat left center;
+	/* background: url(../images/jg_back_detail.png) no-repeat left center; */
 	color: #FC930A;
 	padding: 3px 0 3px 50px;
 }

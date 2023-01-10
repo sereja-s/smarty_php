@@ -156,6 +156,8 @@ function login() {
 				$('#phone').val(data['phone']);
 				$('#adress').val(data['adress']);
 				//<
+
+				// показываем кнопку: Оформить заказ
 				$('#btnSaveOrder').show();
 			} else {
 				alert(data['message']);
@@ -217,7 +219,9 @@ function updateUserData() {
  * сохранение заказа
  */
 function saveOrder() {
+	// собираем данные с формы
 	var postData = getData('form');
+
 	$.ajax({
 		type: 'POST',
 		async: false,

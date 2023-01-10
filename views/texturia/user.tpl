@@ -74,7 +74,7 @@
 								<th>ID</th>
 								<th>Название</th>
 								<th>Цена</th>
-								<th>Количечтво</th>
+								<th>Количество</th>
 							</tr>
 							{foreach $item['children'] as $itemChild name=products}
 								<tr>
