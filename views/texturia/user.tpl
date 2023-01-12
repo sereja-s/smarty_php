@@ -50,6 +50,7 @@
 			<th>Дополнительная информация</th>
 		</tr>
 		{foreach $rsUserOrders as $item name=orders}
+			{* формируем кажджую строку заказа *}
 			<tr>
 				<td>{$smarty.foreach.orders.iteration}</td>
 				<td><a href="#" onclick="showProducts({$item['id']}); return false">Показать товар заказа</a></td>
@@ -67,8 +68,10 @@
 			</tr>
 			<tr class="hideme" id="purchasesForOrderId_{$item['id']}">
 				<td colspan="7">
+					{* проверяем есть ли у нас для этого заказа под-массив со всеми продуктами к данному заказу *}
 					{if $item['children']}
 						<table border="1" cellPadding="1" cellSpacing="1" width="100%">
+							{* подтаблица принадлежащая данному заказу (изначально скрытая) *}
 							<tr>
 								<th>№</th>
 								<th>ID</th>

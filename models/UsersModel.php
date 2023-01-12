@@ -171,6 +171,6 @@ function updateUserData($name, $phone, $adress, $pwd1, $pwd2, $curPwd)
 function getCurUserOrders()
 {
 	$userId = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : NULL;
-	$rs = getOrdersWithProductsByUser($userId);    //d($rs);
+	$rs = getOrdersWithProductsByUser($userId);
 	return $rs;
 }

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2017-10-16 16:28:52
+<?php /* Smarty version Smarty-3.1.6, created on 2023-01-12 22:04:50
          compiled from "../views/admin\adminLeftcolumn.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2158759e4bfe6d0a493-20725577%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'acec6194b13479678294930a7c057116aedb8b86' => 
     array (
       0 => '../views/admin\\adminLeftcolumn.tpl',
-      1 => 1508164129,
+      1 => 1508717524,
       2 => 'file',
     ),
   ),

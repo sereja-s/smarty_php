@@ -38,7 +38,15 @@ function setPurchaseForOrder($orderId, $cart)
 function getPurchaseForOrder($orderId)
 {
 	global $link;
+
+	// формируем запрос с использованием алиасов (псевдонимов):
+	// выбрать все записи из таблицы: purchase и поле: name из таблицы: products Далее соединяем таблицы к которым 
+	// обращаемся (с указанием их алиасов), по условию: поле product_id из таблицы: purchase должно быть равно полю id из 
+	// таблицы: products, при этом выборку делаем только тех записей, у которых поле order_id из таблицы purchase равно $orderId (ID заказа)
+	// т.е. делаем выборку тех покупок из таблицы: purchase которые принадлежат конкретному заказу и объединить результат выборки с таблицей: products из которой берём поле name
+
 	$sql = "SELECT `pe`.*, `ps`.`name` FROM `purchase` as `pe` JOIN `products` as `ps` ON `pe`.`product_id` = `ps`.`id` WHERE `pe`.`order_id` = {$orderId}";
+
 	$rs = mysqli_query($link, $sql);
 	return createSmartyRsArray($rs);
 }

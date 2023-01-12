@@ -110,8 +110,8 @@ function registerNewUser() {
 				//<
 
 				//> на странице заказа
-				$('#loginBox').hide();
-				$('#btnSaveOrder').show();
+				$('#loginBox').hide(); // прячем блок
+				$('#btnSaveOrder').show(); // показываем
 				//<
 			} else {
 				alert(data['message']);
@@ -241,12 +241,17 @@ function saveOrder() {
 
 /**
  * показать ил скрыть данные о заказе
+ * 
+ * id - идентификатор продукта
  */
 function showProducts(id) {
+
 	var objName = "#purchasesForOrderId_" + id;
+
+	// если у нашего оъекта  сss-свойство: display не равно: table-row (т.е. скрыт)
 	if ($(objName).css('display') != 'table-row') {
-		$(objName).show();
+		$(objName).show(); // покажем его
 	} else {
-		$(objName).hide();
+		$(objName).hide(); // иначе скрываем
 	}
 }

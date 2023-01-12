@@ -49,21 +49,27 @@ function makeNewOrder($name, $phone, $adress)
 
 
 /**
- * получить список заказов с привязкой продуктов для пользователя
+ * получить список заказов с привязкой продуктов для пользователя с $userId
  * 
  * @param int $userId ID пользователя
- * @return array заказов с привязкой к продуктам
+ * @return array массив заказов с привязкой к продуктам
  */
 function getOrdersWithProductsByUser($userId)
 {
 	global $link;
+
 	$userId = intval($userId);
+
 	$sql = "SELECT * FROM `orders` WHERE `user_id` = '{$userId}' ORDER BY `id` DESC";
+
 	$rs = mysqli_query($link, $sql);
+
 	$smartyRs = array();
 	while ($row = mysqli_fetch_assoc($rs)) {
+		// для каждой записи заказа сделаем выборку из таблицы покупок и получим все покупки по текущему заказу с id = $row['id']
 		$rsChildren = getPurchaseForOrder($row['id']);
 		if ($rsChildren) {
+			// в текущую строку заказа (массив) добавляем ещё один столбец (ячейку): children
 			$row['children'] = $rsChildren;
 			$smartyRs[] = $row;
 		}

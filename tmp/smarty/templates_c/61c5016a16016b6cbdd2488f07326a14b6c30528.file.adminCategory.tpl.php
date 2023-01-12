@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2017-10-16 18:02:34
+<?php /* Smarty version Smarty-3.1.6, created on 2023-01-12 22:05:10
          compiled from "../views/admin\adminCategory.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1821559e4d81a484815-02867946%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '61c5016a16016b6cbdd2488f07326a14b6c30528' => 
     array (
       0 => '../views/admin\\adminCategory.tpl',
-      1 => 1508169603,
+      1 => 1508717524,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.6',
+  'unifunc' => 'content_59e4d81a4ffee',
   'variables' => 
   array (
     'rsCategories' => 0,
@@ -23,8 +25,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'mainItem' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.6',
-  'unifunc' => 'content_59e4d81a4ffee',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_59e4d81a4ffee')) {function content_59e4d81a4ffee($_smarty_tpl) {?><h2>Категориии</h2>
 <table border='1' cellpadding='1' cellspacing='1'>
