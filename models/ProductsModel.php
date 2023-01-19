@@ -89,7 +89,9 @@ function getProductsFromArray($itemsIds)
 function getProducts()
 {
 	global $link;
+
 	$query = "SELECT * FROM `products` ORDER BY `category_id`";
+
 	$rs = mysqli_query($link, $query);
 	return createSmartyRsArray($rs);
 }
@@ -105,7 +107,9 @@ function getProducts()
 function insertProduct($itemName, $itemPrice, $itemDesc, $itemCat)
 {
 	global $link;
+
 	$query = "INSERT INTO `products` SET `name` = '{$itemName}', `price` = '{$itemPrice}', `description` = '{$itemDesc}', `category_id` = '{$itemCat}'";
+
 	$rs = mysqli_query($link, $query);
 	return $rs;
 }
@@ -125,7 +129,9 @@ function insertProduct($itemName, $itemPrice, $itemDesc, $itemCat)
 function updateProduct($itemId, $itemName, $itemPrice, $itemStatus, $itemDesc, $itemCat, $newFileName = NULL)
 {
 	global $link;
+
 	$set = array();
+
 	if ($itemName) {
 		$set[] = "`name` = '{$itemName}'";
 	}
@@ -144,14 +150,17 @@ function updateProduct($itemId, $itemName, $itemPrice, $itemStatus, $itemDesc, $
 	if ($newFileName) {
 		$set[] = "`image` = '{$newFileName}'";
 	}
+
 	$setStr = implode(', ', $set);
+
 	$query = "UPDATE `products` SET {$setStr} WHERE `id` = '{$itemId}'";
+
 	$rs = mysqli_query($link, $query);
 	return $rs;
 }
 
 /**
- * 
+ * Обновляет запись о продукте и добавляет туда имя файла
  */
 function updateProductImage($itemId, $newFileName)
 {

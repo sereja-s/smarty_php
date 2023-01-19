@@ -75,7 +75,9 @@ function getCatById($catId)
 function getAllMainCategories()
 {
 	global $link;
+
 	$query = "SELECT * FROM `categories` WHERE `parent_id` = 0";
+
 	$rs = mysqli_query($link, $query);
 	return createSmartyRsArray($rs);
 }
@@ -89,9 +91,14 @@ function getAllMainCategories()
 function insertCat($catName, $catParentId = 0)
 {
 	global $link;
+
 	$query = "INSERT INTO `categories` (`parent_id`, `name`) VALUES ('{$catParentId}', '{$catName}')";
+
+	// выполняем запрос
 	mysqli_query($link, $query);
+	// получаем id добавленной записи
 	$id = mysqli_insert_id($link);
+
 	return $id;
 }
 
@@ -102,7 +109,9 @@ function insertCat($catName, $catParentId = 0)
 function getAllCategories()
 {
 	global $link;
+
 	$query = "SELECT * FROM `categories` ORDER BY `parent_id` ASC";
+
 	$rs = mysqli_query($link, $query);
 	return createSmartyRsArray($rs);
 }
@@ -117,13 +126,18 @@ function getAllCategories()
 function updateCategoryData($itemId, $parentId = -1, $newName = '')
 {
 	global $link;
+
 	$set = array();
+
 	if ($newName) {
 		$set[] = "`name` = '{$newName}'";
 	}
 	$set[] = "`parent_id` = '{$parentId}'";
+
 	$setStr = implode(', ', $set);
+
 	$query = "UPDATE `categories` SET {$setStr} WHERE `id` = '{$itemId}'";
+
 	$rs = mysqli_query($link, $query);
 	return $rs;
 }

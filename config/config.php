@@ -43,6 +43,6 @@ $smarty->setConfigDir('../library/Smarty/configs');
 
 // инициализируем объявленные ранее переменные
 $smarty->assign('TemplateWebPath', TemplateWebPath);
-$smarty->assign('TemplateAdminWebPath', TemplateAdminWebPath);
+
 $smarty->assign('ImageWebPath', ImageWebPath);
 //<
