@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2023-01-12 22:11:10
+<?php /* Smarty version Smarty-3.1.6, created on 2023-01-21 20:51:09
          compiled from "../views/admin\adminProducts.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2057359e4e75ea05ac1-30813468%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '61841b8e82aca4be8c4677ab9d757aa621ae9f09' => 
     array (
       0 => '../views/admin\\adminProducts.tpl',
-      1 => 1673550669,
+      1 => 1674323466,
       2 => 'file',
     ),
   ),
@@ -31,14 +31,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <input type="button" onclick="createXML();" value="Сохранить в XML">
 <div id="xml-place"></div>
 <hr>
-Импорт
+<h3 style="margin: 10px 0; font-family: monospace; font-size: 18px; font-weight: 700;">Импорт</h3>
 <form action="/admin/loadfromxml/" method="POST" enctype="multipart/form-data">
-	<input type="file" name="filename"><br>
+	<input type="file" name="filename"><br><br>
 	<input type="submit" value="Загрузить"><br>
 </form>
 <hr>
 <table border='1' cellpadding='1' cellspacing='1'>
-	<caption>Добавить продукт</caption>
+	<caption style="margin: 10px 0; font-family: monospace; font-size: 18px; font-weight: 700;">Добавить продукт
+	</caption>
 	<tr>
 		<th>Название</th>
 		<th>Цена</th>
@@ -76,7 +77,7 @@ $_smarty_tpl->tpl_vars['itemCat']->_loop = true;
 	</tr>
 </table>
 <table border='1' cellpadding='1' cellspacing='1'>
-	<caption>Редактировать</caption>
+	<caption style="margin: 10px 0; font-family: monospace; font-size: 18px; font-weight: 700;">Редактировать</caption>
 	<tr>
 		<th>№</th>
 		<th>ID</th>

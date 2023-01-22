@@ -2,14 +2,15 @@
 <input type="button" onclick="createXML();" value="Сохранить в XML">
 <div id="xml-place"></div>
 <hr>
-Импорт
+<h3 style="margin: 10px 0; font-family: monospace; font-size: 18px; font-weight: 700;">Импорт</h3>
 <form action="/admin/loadfromxml/" method="POST" enctype="multipart/form-data">
-	<input type="file" name="filename"><br>
+	<input type="file" name="filename"><br><br>
 	<input type="submit" value="Загрузить"><br>
 </form>
 <hr>
 <table border='1' cellpadding='1' cellspacing='1'>
-	<caption>Добавить продукт</caption>
+	<caption style="margin: 10px 0; font-family: monospace; font-size: 18px; font-weight: 700;">Добавить продукт
+	</caption>
 	<tr>
 		<th>Название</th>
 		<th>Цена</th>
@@ -41,7 +42,7 @@
 	</tr>
 </table>
 <table border='1' cellpadding='1' cellspacing='1'>
-	<caption>Редактировать</caption>
+	<caption style="margin: 10px 0; font-family: monospace; font-size: 18px; font-weight: 700;">Редактировать</caption>
 	<tr>
 		<th>№</th>
 		<th>ID</th>

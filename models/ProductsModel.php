@@ -8,13 +8,17 @@
 /**
  * получаем последние добавленые товары
  * 
+ * @param int $offset смещение
  * @param int $limit лимит товаров
  * @return array массив товаров
  */
 function getLastProducts($offset = 1, $limit = 12)
 {
 	global $link;
+
+	// запрос для получения общего кол-ва продуктов в БД
 	$sqlCnt = "SELECT count(`id`) as cnt FROM `products`";
+
 	$rs = mysqli_query($link, $sqlCnt);
 	$cnt = createSmartyRsArray($rs);
 
@@ -23,6 +27,7 @@ function getLastProducts($offset = 1, $limit = 12)
 
 	$rs = mysqli_query($link, $sql);
 	$rows = createSmartyRsArray($rs);
+
 	return array($rows, $cnt[0]['cnt']);
 }
 
@@ -168,16 +173,26 @@ function updateProductImage($itemId, $newFileName)
 	return $rs;
 }
 
+/** 
+ * Функция отвечает за массовое добавление импортированных файлов
+ */
 function insertImportProducts($aProducts)
 {
 	global $link;
-	if (!is_array($aProducts))        return false;
+
+	if (!is_array($aProducts)) return false;
+
 	$sql = "INSERT INTO `products` (`name`, `category_id`, `description`, `price`, `status`) VALUES ";
+
+	// посчитаем кол-во элементов в массиве
 	$cnt = count($aProducts);
+
+	// в цикле сформируем продолжение строки запроса (со значениями полей) 
 	for ($i = 0; $i < $cnt; $i++) {
 		if ($i > 0) $sql .= ', ';
 		$sql .= "('" . implode("', '", $aProducts[$i]) . "')";
 	}
+
 	$rs = mysqli_query($link, $sql);
 	return $rs;
 }

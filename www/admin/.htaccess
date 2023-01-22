@@ -1,4 +1,4 @@
-AuthType Basic
-AuthName admin
-AuthUserFile /xampp/htdocs/myshop.local/pwdaccess
-require valid-user
+#AuthType Basic
+#AuthName admin
+#AuthUserFile /xampp/htdocs/myshop.local/pwdaccess
+#require valid-user

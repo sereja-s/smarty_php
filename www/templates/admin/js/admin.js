@@ -127,7 +127,7 @@ function updateProduct(itemId) {
 }
 
 /**
- * показать ил скрыть данные о заказе
+ * показать или скрыть данные о заказе
  */
 function showProducts(id) {
 	var objName = "#purchaseForOrderId_" + id;
@@ -137,15 +137,21 @@ function showProducts(id) {
 		$(objName).hide();
 	}
 }
-
+/**
+ * Устанавливаем новый статус для заказа (ajax-запрос)  
+ */
 function updateOrderStatus(itemId) {
 	var status = $('#itemStatus_' + itemId).attr('checked');
+
 	if (!status) {
 		status = 0;
 	} else {
 		status = 1;
 	}
+
+	// инициализируем переменную в котороую положим json-массив
 	var postData = { itemId: itemId, status: status };
+
 	$.ajax({
 		type: 'POST',
 		async: false,
@@ -153,16 +159,24 @@ function updateOrderStatus(itemId) {
 		data: postData,
 		dataType: 'json',
 		success: function (data) {
-			if (!data['success']) {
+			if (data['success']) {
+				alert(data['message']);
+			} else {
+				// сообщение об ошибке
 				alert(data['message']);
 			}
 		}
 	});
 }
 
+/**
+ * обновить дату оплаты заказа
+ */
 function updateOrderDatePayment(itemId) {
 	var datePayment = $('#datePayment_' + itemId).val();
+
 	var postData = { itemId: itemId, datePayment: datePayment };
+
 	$.ajax({
 		type: 'POST',
 		async: false,
@@ -170,13 +184,19 @@ function updateOrderDatePayment(itemId) {
 		data: postData,
 		dataType: 'json',
 		success: function (data) {
-			if (!data['success']) {
+			if (data['success']) {
+				alert(data['message']);
+			} else {
+				// сообщение об ошибке
 				alert(data['message']);
 			}
 		}
 	});
 }
 
+/**
+ * создать XML-файл
+ */
 function createXML() {
 	$.ajax({
 		type: 'POST',
@@ -184,8 +204,13 @@ function createXML() {
 		url: '/admin/createxml/',
 		dataType: 'html',
 		success: function (data) {
+			// при удачном выполнениии ajax-запроса:
+
+			// в div с id="xml-place" на странице: adminProduct.tpl поместим результат выполнения (то что нам возвратит
+			// function createxmlAction() из AdminController.php)
 			$('#xml-place').html(data);
-			window.open('http://www.myshop.local/xml/products.xml', '_blank');
+			// откроем вкладку в браузере по указанному адресу
+			window.open('http://shop-master/www/xml/products.xml', '_blank');
 		}
 	});
 }

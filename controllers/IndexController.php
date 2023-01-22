@@ -24,13 +24,23 @@ function indexAction($smarty)
 {
 	//> Пагинатор
 	$paginator = array();
+
+	// установим кол-во элементов на странице
 	$paginator['perPage'] = 9;
+	// определим на какой странице находимся (текущая страница)
 	$paginator['currentPage'] = isset($_GET['page']) ? $_GET['page'] : 1;
+	// вычислим смещение (с какого элемента надо делать выборку)
 	$paginator['offset'] = ($paginator['currentPage'] * $paginator['perPage']) - $paginator['perPage'];
+	// сформируем ссылку пагинатора
 	$paginator['link'] = '/index/?page=';
 
+	// получим массив (из 2-х элеменов) который возвращает ф-ия: getLastProducts()
+	// 1-ый элемент массива будет помещён в $rsProducts- продукты, 2-ой: $allCnt- общее кол-во продуктов в БД
 	list($rsProducts, $allCnt) = getLastProducts($paginator['offset'], $paginator['perPage']);
+	// округляем результат деления (в большую сторону) Получили: всего страниц
 	$paginator['pageCnt'] = ceil($allCnt / $paginator['perPage']);
+
+	// передаём переменную в шаблон
 	$smarty->assign('paginator', $paginator);
 	//<
 

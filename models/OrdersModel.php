@@ -77,14 +77,23 @@ function getOrdersWithProductsByUser($userId)
 	return $smartyRs;
 }
 
+/** 
+ * Получаем данные(все заказы) для таблицы заказов в админке
+ */
 function getOrders()
 {
 	global $link;
+
 	$query = "SELECT o.*, u.name, u.email, u.phone, u.adress FROM `orders` AS `o` LEFT JOIN `users` AS `u` ON o.user_id = u.id ORDER BY `id` DESC";
+
 	$rs = mysqli_query($link, $query);
+
 	$smartyRs = array();
+
 	while ($row = mysqli_fetch_assoc($rs)) {
 		$rsChildren = getProductsForOrder($row['id']);
+
+		// по условию добавим отдельным столбцом подмассив дочерних элементов
 		if ($rsChildren) {
 			$row['children'] = $rsChildren;
 			$smartyRs[] = $row;
@@ -93,27 +102,43 @@ function getOrders()
 	return $smartyRs;
 }
 
+/** 
+ * Получаем продукты принадлежащие конкретному заказу
+ */
 function getProductsForOrder($orderId)
 {
 	global $link;
+
 	$query = "SELECT * FROM `purchase` AS `pe` LEFT JOIN `products` AS `ps` ON pe.product_id = ps.id WHERE (`order_id` = '{$orderId}')";
+
 	$rs = mysqli_query($link, $query);
 	return createSmartyRsArray($rs);
 }
 
+/** 
+ * Обновить статус заказа
+ */
 function updateOrderStatus($itemId, $status)
 {
 	global $link;
+
 	$status = intval($status);
+
 	$query = "UPDATE `orders` SET `status` = '{$status}' WHERE `id` = '{$itemId}'";
+
 	$rs = mysqli_query($link, $query);
 	return $rs;
 }
 
+/** 
+ * Обновить дату оплаты заказа
+ */
 function updateOrderDatePayment($itemId, $datePayment)
 {
 	global $link;
+
 	$query = "UPDATE `orders` SET `date_payment` = '{$datePayment}' WHERE `id` = '{$itemId}'";
+
 	$rs = mysqli_query($link, $query);
 	return $rs;
 }

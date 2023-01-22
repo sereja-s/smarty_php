@@ -10,14 +10,21 @@ body{
     text-align: center;
 }
 #leftColumn{
-    width: 200px;
-    float: left;
+    max-width: 200px;
+	 margin: 0 50px 0 10px;
+    float: left;	 
+}
+#leftColumn a{
+	font-size: 20px;
+	display: inline-block;
+	padding: 5px 0;
+	font-family: 'Courier New', monospace;	 
 }
 #leftMenu, #loginBox, #registerBox{
-    padding-bottom: 20px;
+    padding-bottom: 20px;	
 }
 #centerColumn{
-    width: 600px;
+	max-width: 600px;
     float: left;
 }
 #footer{
@@ -25,6 +32,7 @@ body{
 }
 .menuCaption{
     padding: 3px;
+	 font-size: 22px;
     font-weight: bold;
 }
 .cartBox{
